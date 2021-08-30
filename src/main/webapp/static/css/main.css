@@ -1,0 +1,152 @@
+@charset "UTF-8";
+
+html, body {
+	margin: 0;
+	padding: 0;
+	font-size: 12px;
+	text-align: center;
+	background-color:lightgray;
+}
+
+#gnb {
+	background-color: #03c75a;
+	height: 35px;
+	display: flex;
+	padding: 5px;
+	align-content: center;
+	justify-content: space-between;
+}
+
+.email-box {
+	margin: auto 5px;
+	color: white;
+}
+
+.gnb-image-container {
+	overflow: hidden;
+}
+
+.gnb-image {
+	height: 600%;
+}
+
+.promotion {
+	overflow: hidden;
+	background-color: black;
+	height: 300px;
+	background-color: black;
+}
+
+.promotion-container {
+	display: flex;
+	position: relative;
+	width: 1100%;
+}
+
+.promotion-item {
+	width: 100%;
+	height: 300px;
+	position: relative;
+}
+
+.promotion-item>img {
+	width: 100%;
+	height: 100%;
+}
+
+.promotion-item>span {
+	position: absolute;
+	left: 20px;
+	bottom: 35px;
+	color: white;
+	font-size: 25px;
+	text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;
+}
+
+.category {
+	margin: 0;
+	padding: 0;
+	display: flex;
+	justify-content: space-around;
+	align-content: center;
+	list-style: none;
+	border-style: solid;
+	border-width: 0 0 1px 0;
+	background-color: white;
+}
+.clicked-list{
+	color:green;
+	border-style:solid;
+	border-color: green;
+	border-width: 0 0 2px 0;
+}
+.total{
+	background-color:white;
+}
+
+li {
+	padding: 5px;
+	font-weight:400;
+}
+
+li:hover {
+	color: blue;
+}
+
+li:active {
+	color: green;
+	border-style: solid;
+	border-color: green;
+	border-width: 0 0 2px 0;
+}
+.item-length{
+	color:red;
+	font-weight:bold;	
+}
+
+.more {
+	background-color: white;
+}
+
+.top {
+	text-decoration: none;
+	color: black;
+}
+
+.content {
+	background-color: grey;
+	padding: 2px;
+	height:100%;
+	display: flex;
+	gap: 5px;
+	justify-content: space-around;
+}
+
+.animation {
+	transition: all 1.5s;
+}
+
+
+/*category에 따른 product*/
+.product-list1{
+	width:100%;
+}
+.product-list2{
+	width:100%;
+}
+.product{
+	width: 100%;
+	background-color:white;
+	margin-bottom:5px;
+}
+.product-img > img{
+	width:100%;
+}
+.product-content{
+	overflow:hidden;
+	display:-webkit-box;
+	-webkit-line-clamp:3;
+	-webkit-box-orient:vertical;
+}
+.to-top{
+}
