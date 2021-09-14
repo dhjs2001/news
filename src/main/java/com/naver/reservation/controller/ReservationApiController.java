@@ -14,13 +14,13 @@ import com.naver.reservation.detail.dto.DetailInfo;
 import com.naver.reservation.detail.dto.DisplayInfo;
 import com.naver.reservation.main.dto.MainProduct;
 import com.naver.reservation.service.DetailPageService;
-import com.naver.reservation.service.ReservationService;
+import com.naver.reservation.service.MainPageService;
 
 @RestController
 @RequestMapping(path = "/api")
 public class ReservationApiController {
 	@Autowired
-	ReservationService reservationService;
+	MainPageService mainPageService;
 	@Autowired
 	DetailPageService detailPageService;
 
@@ -30,14 +30,14 @@ public class ReservationApiController {
 		Map<String, Object> map = new HashMap<>();
 		
 		if(id == 0) {
-			List<MainProduct> list = reservationService.getProductAll(start);
-			Integer length = reservationService.selectCount();
+			List<MainProduct> list = mainPageService.getProductAll(start);
+			Integer length = mainPageService.selectCount();
 			map.put("product", list);
 			map.put("length", length);
 			
 		}else if (0 < id && id < 6) {
-			List<MainProduct> list = reservationService.getProductByCategoryId(id, start);
-			Integer length = reservationService.selectCountByCategoryId(id);
+			List<MainProduct> list = mainPageService.getProductByCategoryId(id, start);
+			Integer length = mainPageService.selectCountByCategoryId(id);
 			map.put("product", list);
 			map.put("length", length);
 		}

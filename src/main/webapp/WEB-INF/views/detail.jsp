@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="initial-scale=1, width=device-width" />
-<title>reservation product detail page</title>
+<title>상세페이지</title>
 <link rel="stylesheet" type="text/css" href="/static/css/detail.css">
 </head>
 <body>
@@ -25,7 +25,12 @@
 					<a href="/main"> <img alt="네이버 예약 로고"
 						src="/static/img/spr_bi.c753b938cfe0481b000adab9b84a1f8c.png">
 					</a>
-					<div class="email">xxx@df.com</div>
+					<div class="email"><a href="/login"><c:choose>
+						<c:when test="${not empty requestScope.email}">
+						${email }
+						</c:when>
+						<c:otherwise>예매확인</c:otherwise>
+					</c:choose></a></div>
 
 				</div>
 				<div class="title-img-page">
@@ -64,7 +69,7 @@
 			</span> 할인
 		</div>
 	</div>
-	<button class="reservation-button">
+	<button class="reservation-button"  onclick="location.href='/reservation/${id}'">
 		<img alt="달력사진" src="/static/img/calender.png"><span>예매하기</span>
 	</button>
 	<div class="review-container">

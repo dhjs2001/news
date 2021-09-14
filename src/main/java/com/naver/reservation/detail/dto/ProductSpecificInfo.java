@@ -1,6 +1,6 @@
 package com.naver.reservation.detail.dto;
 
-public class ReservationInfo {
+public class ProductSpecificInfo {
 	private int productId;
 	private String reservationName;
 	private double score;

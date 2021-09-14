@@ -17,7 +17,15 @@
 				<img class="gnb-image" alt="예약이미지"
 					src="/static/img/spr_bi.c753b938cfe0481b000adab9b84a1f8c.png">
 			</div>
-			<div class="email-box">dhjs2001@naver.com</div>
+			<div class="email-box">
+				<a href="/login"> <c:choose>
+						<c:when test="${not empty requestScope.email}">
+						${email }
+						</c:when>
+						<c:otherwise>예매확인</c:otherwise>
+					</c:choose>
+				</a>
+			</div>
 		</div>
 
 		<!-- 프로모션 영역 -->

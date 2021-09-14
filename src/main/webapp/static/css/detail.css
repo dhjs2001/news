@@ -58,10 +58,16 @@ body, html {
 .gnb > a > img{
 	height:180px;
 }
+.gnb > a{width: 5rem;}
 .email {
 	color: white;
 	line-height: 31px;
 	font-size: 21px;
+	flex-shrink: 0;
+}
+.email > a{
+	text-decoration:none;
+	color:white;
 }
 
 .title-img-page {

@@ -1,0 +1,219 @@
+@charset "UTF-8";
+
+html, body {
+	margin: 0;
+	padding: 0;
+	text-align: left;
+	background-color: lightgray;
+}
+
+.top {
+	position: relative;
+	background-color: white;
+	font-weight: bold;
+	font-size: 2em;
+	padding: 0.2em;
+	text-align: center;
+}
+
+.top>span {
+	position: absolute;
+	left: 1em;
+	cursor: pointer;
+}
+
+.product-img-container {
+	position: relative;
+	text-align: center;
+}
+
+.product-img-container>img {
+	width: 100%;
+}
+
+.description {
+	font-size: 1.5rem;
+	color: white;
+}
+
+.product-summarization {
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 3rem;
+	font-size: 3em;
+}
+
+.summarize-info {
+	font-size: 1rem;
+	color: yellow;
+}
+
+.product-info {
+	background-color: white;
+	padding: 1rem;
+	margin-bottom: 0.2em;
+}
+
+.tikets {
+	padding: 1em;
+	background-color: white;
+	margin-bottom: 0.2em;
+}
+
+.tikets-kind {
+	padding: 0.2em;
+	border-bottom: solid 1px lightgray;
+	justify-content: space-around;
+	font-size: 1em;
+}
+.tikets-kind > div:first-child{
+	display:inline-block;
+}
+.tikets-kind>div:nth-child(2) {
+	float:right;
+	text-align: right;
+}
+
+.tikets-kind:last-child {
+	border: none;
+}
+
+.tikets-kind  span {
+	color: gray;
+}
+
+.tiket-number-button-container {
+	display: flex;
+	justify-content: flex-end;
+}
+
+.tiket-number-button-container>img {
+	height: 2.5em;
+}
+
+.tiket-number-button-container>div {
+	width: 40px;
+	border: solid 1px gray;
+}
+
+.tikets-input {
+	width: 2.5em;
+	color: gray;
+	font-size: 1em;
+	text-align: center;
+	border: solid 1px gray;
+}
+.right-button{
+	cursor:pointer;
+}
+.price{
+	color:black !important;
+}
+.purchaser-info-title{
+	background-color:white;
+	padding: 0.7em;
+	border-bottom: solid 1px lightgray;
+}
+.purchaser-info-title > h3{
+	display:inline;
+}
+.purchaser-info-title > div{
+	float:right;
+}
+.specific-info{
+	display:flex;
+	justify-content: flex-end;
+	flex-wrap: wrap;
+	background-color:white;
+	padding:1em;
+	margin-bottom: 0.2em;
+	box-sizing: border-box;
+	width: 100%;
+}
+.specific-info-label{
+	line-height:2em;
+	width: 50%;
+}
+.specific-info-input{
+	line-height:2em;
+	font-weight: bold;
+	width: 50%;
+}
+.specific-info-input > input{
+	width: 100%;
+	border: solid 1px lightgray;
+	height: 1.5em;
+}
+.terms{
+	margin-bottom: 0.2rem;
+	background-color: white;
+}
+.check-terms{
+	background-color:white;
+	font-weight: bold;
+	font-size: 1.3rem;
+	padding:1rem;
+	border-bottom:solid 1px lightgray;
+}
+input[type=checkbox]{
+	display:none;
+}
+input[type=checkbox] ~ label{
+	display:inline-block;
+	width: 1.3rem;
+	height: 1.3rem;
+	background: url('/static/img/checkInCircle.png') no-repeat 0 0 / contain;
+	cursor:pointer;
+}
+input[type=checkbox]:checked ~ label{
+	background: url('/static/img/checkInGreenCircle.png') no-repeat 0 0 / contain;
+
+}
+
+.check-terms > span{
+	float:right;
+	color:gray;
+}
+.personal-info-terms{
+	padding: 0 1rem 0.5rem;
+	color:gray;
+}
+.personal-info-terms > span{
+	float:right;
+	text-decoration:underline;
+	cursor: pointer;
+}
+.personal-info-terms img{
+	width:15px
+}
+.specific-personal-info-terms{
+	background-color:lightgray;
+	border-style: solid;
+	border-width: 1px 1px 1px 0;
+	border-color: #dedede;
+	overflow: scroll;
+	height: 0;
+	transition: all 0.5s;
+}
+.reservation-button{
+	width:100%;
+	border:none;
+	padding:0.5em;
+	color:white;
+	background-color:#b7b4b4;
+	font-size:1em;
+}
+.reservation-button > img{
+	height:1em;
+}
+
+
+.reservation-button:hover{
+	background-color: #00cd33;
+}
+.error{
+	color:red;
+	font-weight:bold;
+	font-size:1rem;
+}

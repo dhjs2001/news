@@ -11,8 +11,8 @@ import com.naver.reservation.dao.ProductDao;
 import com.naver.reservation.dto.Product;
 import com.naver.reservation.main.dao.MainProductDao;
 import com.naver.reservation.main.dto.MainProduct;
-import com.naver.reservation.service.ReservationService;
-import com.naver.reservation.service.impl.ReservationServiceImpl;
+import com.naver.reservation.service.MainPageService;
+import com.naver.reservation.service.impl.MainPageServiceImpl;
 
 
 public class Test {

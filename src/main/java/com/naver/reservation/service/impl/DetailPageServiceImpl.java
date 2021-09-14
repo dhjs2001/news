@@ -11,9 +11,9 @@ import com.naver.reservation.detail.dao.DisplayInfoDao;
 import com.naver.reservation.detail.dto.DetailInfo;
 import com.naver.reservation.detail.dto.DisplayInfo;
 import com.naver.reservation.detail.dto.ProductPrice;
-import com.naver.reservation.detail.dto.ReservationInfo;
+import com.naver.reservation.detail.dto.ProductSpecificInfo;
 import com.naver.reservation.detail.dao.ProductPriceDao;
-import com.naver.reservation.detail.dao.ReservationInfoDao;
+import com.naver.reservation.detail.dao.ProductspecificInfoDao;
 import com.naver.reservation.service.DetailPageService;
 
 @Service
@@ -23,7 +23,7 @@ public class DetailPageServiceImpl implements DetailPageService {
 	@Autowired
 	ProductPriceDao productPriceDao;
 	@Autowired
-	ReservationInfoDao reservationInfoDao;
+	ProductspecificInfoDao productspecificInfoDao;
 	@Autowired
 	DisplayInfoDao displayInfoDao;
 	
@@ -51,8 +51,8 @@ public class DetailPageServiceImpl implements DetailPageService {
 
 	@Override
 	@Transactional
-	public List<ReservationInfo> getReview(int id){
-		List<ReservationInfo> list = reservationInfoDao.getReview(id);
+	public List<ProductSpecificInfo> getReview(int id){
+		List<ProductSpecificInfo> list = productspecificInfoDao.getReview(id);
 		return list;
 	}
 	

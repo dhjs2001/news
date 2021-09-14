@@ -40,5 +40,6 @@ public class WebMvcContextConfiguration implements WebMvcConfigurer {
 	public void addViewControllers(ViewControllerRegistry registry) {
 		registry.addViewController("/").setViewName("index");
 	}
+	
 
 }

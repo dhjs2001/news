@@ -1,6 +1,6 @@
 package com.naver.reservation.detail.dao;
 
-public class ReservationInfoDaoSqls {
+public class ProductspecificInfoDaoSqls {
 	public final static String SELECT = "SELECT a.product_id, b.reservation_name, a.score, a.comment, b.reservation_email, d.file_name, a.create_date\r\n"
 			+ "FROM\r\n"
 			+ "reservation_user_comment AS a\r\n"

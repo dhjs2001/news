@@ -259,8 +259,6 @@ function addEventOnCategory() {
 }
 
 
-
-
 // 로드가 끝나면 title 슬라이더에 animtaion 클래스 추가, 펼쳐보기 크기 조절
 window.onload = function() {
 	if (pageNumberCheck()) {
@@ -279,4 +277,7 @@ window.onload = function() {
 	clickedCategory(detailAndMapTab);
 	addEventOnCategory();
 }
+
+
+
 

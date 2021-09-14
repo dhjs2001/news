@@ -8,10 +8,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.naver.reservation.main.dao.MainProductDao;
 import com.naver.reservation.main.dto.MainProduct;
-import com.naver.reservation.service.ReservationService;
+import com.naver.reservation.service.MainPageService;
 
 @Service
-public class ReservationServiceImpl implements ReservationService {
+public class MainPageServiceImpl implements MainPageService {
 	@Autowired
 	MainProductDao mainProductDao;
 	
