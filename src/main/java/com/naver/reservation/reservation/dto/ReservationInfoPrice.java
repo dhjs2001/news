@@ -34,5 +34,17 @@ public class ReservationInfoPrice {
 		return "ReservationInfoPrice [id=" + id + ", reservationInfoId=" + reservationInfoId + ", productPriceId="
 				+ productPriceId + ", count=" + count + "]";
 	}
+	
+	public boolean checkValue() {
+		if(getCount() == 0) {
+			return false;
+		}else if(getProductPriceId() == 0) {
+			return false;
+		}else {
+			return true;
+		}
+			
+			
+	}
 
 }

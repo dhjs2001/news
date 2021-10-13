@@ -5,7 +5,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 
 @Configuration
-@ComponentScan(basePackages = { "com.naver.reservation.service", "com.naver.reservation.detail","com.naver.reservation.main","com.naver.reservation.reservation", "com.naver.reservation.login" })
+@ComponentScan(basePackages = { "com.naver.reservation" })
 @Import({ DBConfig.class })
 public class ApplicationConfig {
 	

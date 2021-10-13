@@ -1,0 +1,125 @@
+@charset "UTF-8";
+
+html, body {
+	margin: 0;
+	padding: 0;
+	text-align: center;
+	background-color: lightgray;
+}
+
+.top {
+	background-color: white;
+	height: 3em;
+	line-height: 3em;
+	padding: 0 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.title {
+	font-weight: bold;
+	margin-bottom: 1em;
+}
+
+.top>span {
+	float: left;
+	font-size: 2em;
+	cursor: pointer;
+}
+
+form {
+	
+}
+
+.review {
+	font-weight: bold;
+	background-color: white;
+	padding: 1em;
+	margin-bottom: 0.5em;
+}
+
+.rank {
+	margin: 0.5em 0;
+}
+
+#review-content {
+	border: none;
+	border-bottom: 1px solid lightgray;
+	width: 100%;
+	height: 10em;
+	padding: 0;
+}
+
+.picture {
+	padding: 5px;
+	TEXT-ALIGN: left;
+}
+
+#submit {
+	background-color: #3fdc3f;
+	width: 100%;
+	border: none;
+	color: white;
+	height: 3em;
+	line-height: 3em;
+	margin-bottom: 1rem;
+	cursor: pointer;
+}
+
+.text-limit {
+	font-weight: normal;
+	color: gray;
+	font-size: 0.9em;
+	float: right;
+}
+
+.review-input {
+	border: 1px solid lightgray;
+}
+
+.rank-star {
+	background-image: url("/getImage/img/grayStar.png");
+}
+
+.rank {
+	
+}
+
+.score {
+	font-size: 2.5em;
+	color: gray;
+}
+
+.stars-container {
+	display: inline-block;
+}
+
+.star {
+	height: 2em;
+	cursor: pointer;
+}
+
+label {
+	cursor: pointer;
+}
+
+.img-container {
+	
+}
+
+.img-item {
+	display: inline-block;
+	position: relative;
+	margin: 0 1em;
+}
+
+.img-item>img {
+	height: 7em;
+}
+
+.cancel {
+	border: 1px solid black;
+	position: absolute;
+	right: 0;
+	top: 0;
+	cursor: pointer;
+}

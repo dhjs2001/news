@@ -21,8 +21,12 @@ public class ProductspecificInfoDao {
 		this.jdbc = new NamedParameterJdbcTemplate(dataSource);
 	}
 	
-	public List<ProductSpecificInfo> getReview(int id){
-		List<ProductSpecificInfo> list = jdbc.query(SELECT, Collections.singletonMap("id", id), rowMapper);
+	public List<ProductSpecificInfo> getReview(int productId){
+		List<ProductSpecificInfo> list = jdbc.query(SELECT, Collections.singletonMap("id", productId), rowMapper);
+		return list;
+	}
+	public List<ProductSpecificInfo> getReviewByReservationCommentId(int reservationCommentId){
+		List<ProductSpecificInfo> list = jdbc.query(SELECT_BY_RESERVATION_COMMENT_ID, Collections.singletonMap("id", reservationCommentId), rowMapper);
 		return list;
 	}
 }

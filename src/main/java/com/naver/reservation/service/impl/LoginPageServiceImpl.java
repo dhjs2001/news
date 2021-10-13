@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.naver.reservation.login.dao.ReservationCountDao;
 import com.naver.reservation.login.dto.ReservationCount;
@@ -15,6 +16,7 @@ public class LoginPageServiceImpl implements LoginPageService {
 	ReservationCountDao reservationCountDao;
 
 	@Override
+	@Transactional
 	public int getReservationCount(String reservationEmail) {
 		 List<ReservationCount> list = reservationCountDao.getReservationCount(reservationEmail);
 		 int count = list.get(0).getCount();

@@ -11,7 +11,7 @@
 </head>
 <body>
 	<header class="top">
-		<img alt="초록색 상자 안 N" src="/static/img/naverReservation.png">
+		<a href="/main"><img alt="초록색 상자 안 N" src="/getImage/img/naverReservation.png"></a>
 	</header>
 	<div class="check-email">
 		<span>비회원 예약확인</span>
@@ -28,7 +28,7 @@
 		</form>
 	</div>
 	<footer>
-		<a href="#">↑TOP</a> 네이버(주)는 통신판매의 당사자가 아니며, 상품의정보, 거래조건, 이용 및 환불 등과
+		<a href="#">↑TOP</a><br><br> 네이버(주)는 통신판매의 당사자가 아니며, 상품의정보, 거래조건, 이용 및 환불 등과
 		고나련한 의무와 책임은 각 회원에게 있습니다.<br> <br> <span class="font-black">(주)네이버
 			사업자정보 ∨</span><br>
 		<br> 이용약관 | <span class="bold">개인정보처리방침</span> | 네이버 예약 고객센터 <br>

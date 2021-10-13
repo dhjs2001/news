@@ -1,7 +1,7 @@
 package com.naver.reservation.detail.dao;
 
 public class DisplayInfoDaoSqls {
-	public static final String SELECT = "SELECT a.description, b.place_street, b.place_lot, b.place_name, b.tel, d.file_name FROM product AS a \r\n"
+	public static final String SELECT = "SELECT a.description, b.place_street, b.place_lot, b.place_name, b.tel, d.save_file_name FROM product AS a \r\n"
 			+ "JOIN \r\n"
 			+ "display_info AS b \r\n"
 			+ "ON a.id = b.product_id \r\n"

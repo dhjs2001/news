@@ -2,48 +2,122 @@
  * 
  */
 
-// Category 클릭시 초록색 밑줄 추가
 
-const categoryUl = document.querySelector("ul");
-categoryUl.onclick = function(evt) {
-	const categoryLi = document.querySelectorAll('ul > li');
-	if (evt.target.tagName == "LI") {
-		for (i = 0; i < categoryLi.length; i++) {
-			categoryLi[i].classList.remove("clicked-list");
-		}
-		evt.target.classList.add("clicked-list");
-	}
-}
 
 
 
 // 프로모션 슬라이드
 
-const slide = document.querySelector('.promotion-container');
-const clone = slide.firstElementChild.cloneNode(true);
-slide.appendChild(clone);
-const length = slide.childElementCount;
-slide.style.width = length * 100 + "%";
-let count = 1;
-function promotionAction() {
-	setTimeout(function() {
-		if (count != length) {
-			if (count == 1) {
-				slide.classList.add("animation");
+function Promotion(slideClass) {
+	this.count = 1;
+
+	this.slide = document.querySelector('.' + slideClass);
+	this.promotionSwitch = true;
+	this.length = 0;
+	this.timeOutVal = null;
+	this.setTimeOutVal = function(value) {
+		this.timeOutVal = value;
+	}
+	this.getTimeOutVal = function() {
+		return this.timeOutVal;
+	}
+	this.setLength = function(value) {
+		this.length = value;
+	}
+	this.getLength = function() {
+		return this.length;
+	}
+
+	this.createClone = function() {
+		const clone = this.slide.firstElementChild.cloneNode(true);
+		this.slide.appendChild(clone);
+		this.setLength(this.slide.childElementCount);
+		this.slide.style.width = this.getLength() * 100 + "%";
+		this.slide.style.left = 0;
+
+	}
+	this.setCount = function(value) {
+		this.count = value;
+	}
+	this.getCount = function() {
+		return this.count;
+	}
+
+	this.setPromotionSwitch = function(value) {
+		this.promotionSwitch = value;
+	}
+	this.getPromotionSwitch = function() {
+		return this.promotionSwitch;
+	}
+
+
+	this.promotionAction = function() {
+		const slide = this.slide;
+		const timeout = setTimeout(() => {
+			if (this.getPromotionSwitch() != true) {
+				return false;
 			}
-			slide.style.left = -count * 100 + "%";
-			count += 1;
+			if (this.getCount() != this.getLength()) {
+				if (this.getCount() == 1) {
+					slide.classList.add("animation");
+				}
+				slide.style.left = -this.getCount() * 100 + "%";
+				this.setCount(this.getCount() + 1);
 
-		} else {
-			slide.classList.remove("animation");
-			slide.style.left = 0;
-			count = 1;
-		}
-		promotionAction();
-	}, 3000);
-
+			} else {
+				slide.classList.remove("animation");
+				slide.style.left = 0;
+				this.setCount(1);
+			}
+			this.promotionAction();
+		}, 5000);
+	}
 }
-promotionAction();
+
+const promotionAction = new Promotion('promotion-container');
+const categoryUl = document.querySelector("ul");
+const categoryLi = document.querySelectorAll('ul > li');
+const more = document.querySelector('.more');
+window.addEventListener("load", () => {
+	// Category 클릭시 초록색 밑줄 추가
+
+	categoryUl.onclick = function(evt) {
+
+		if (evt.target.tagName == "LI") {
+			for (i = 0; i < categoryLi.length; i++) {
+				categoryLi[i].classList.remove("clicked-list");
+			}
+			evt.target.classList.add("clicked-list");
+		}
+	}
+
+	promotionAction.createClone();
+	promotionAction.promotionAction();
+
+
+
+	// 처음 목록 가져오기
+	getItems(0, moreStandard);
+
+	//더 보기 클릭 시 아이템 더 가져오기
+	more.addEventListener("click", function() {
+		getItems(moreStandard.currentId, moreStandard);
+	});
+	//카테고리에 이벤트 추가
+	addEventOnCategory(category);
+
+});
+window.addEventListener("focus", () => {
+	promotionAction.setPromotionSwitch(true);
+	promotionAction.promotionAction();
+});
+window.addEventListener("blur", () => {
+	promotionAction.setPromotionSwitch(false);
+});
+window.addEventListener("resize", ()=>{
+	contentAnimation();
+});
+
 
 
 
@@ -69,7 +143,6 @@ function ajax(id, start, moreStandard) {
 		const oReq = new XMLHttpRequest();
 		oReq.addEventListener("load", function() {
 			const context = JSON.parse(this.responseText);
-			console.log(context);
 			moreStandard.setCurrentId(id);
 			resolv(context);
 		});
@@ -78,24 +151,34 @@ function ajax(id, start, moreStandard) {
 	});
 }
 
-//더 보기 클릭 시 아이템 더 가져오기
-const more = document.querySelector('.more');
-more.addEventListener("click", function() {
-	getItems(moreStandard.currentId, moreStandard);
-})
+
+//content animation을 위한 이벤트
+function contentAnimation() {
+	setTimeout(() => {
+		const contentNode = document.querySelector('.content');
+		const productList1 = document.querySelector('.product-list1');
+		const productList2 = document.querySelector('.product-list2');
+		const height1 = productList1.offsetHeight;
+		const height2 = productList2.offsetHeight;
+		if (height1 > height2) {
+			contentNode.style.height = height1 + 'px';
+		} else {
+			contentNode.style.height = height2 + 'px';
+		}
+	}, 50);
+}
+
 
 function getItems(id, moreStandard) {
 	if (id == moreStandard.getCurrentId()) {
 		const addStartNumber = 4;
 		const start = moreStandard.getStart() + addStartNumber;
 		moreStandard.setStart(start);
-		console.log(moreStandard.getStart())
-		ajax(id, moreStandard.getStart(), moreStandard).then((context) => deploy(context, 1, moreStandard));
+		ajax(id, moreStandard.getStart(), moreStandard).then((context) => deploy(context, 1, moreStandard)).then(() => contentAnimation());
 	} else {
-		console.log(moreStandard.getStart())
 		moreStandard.setCurrentId(id);
 		moreStandard.setStart(0);
-		ajax(id, moreStandard.getStart(), moreStandard).then((context) => deploy(context, 0, moreStandard));
+		ajax(id, moreStandard.getStart(), moreStandard).then((context) => deploy(context, 0, moreStandard)).then(() => contentAnimation());
 	}
 }
 
@@ -146,8 +229,7 @@ function deploy(context, isSame, moreStandard) {
 	}
 }
 
-// 처음 목록 가져오기
-getItems(0, moreStandard);
+
 
 
 //카테고리 마다 클릭 이벤트 추가
@@ -167,52 +249,8 @@ function addEventOnCategory(category) {
 }
 
 
-//카테고리에 이벤트 추가
-addEventOnCategory(category);
 
 
 
-/*
-function deployItems() {
-	const items = document.querySelectorAll('.product');
-	const offsetWidth = items[0].offsetWidth;
-	let totalWidth = items[0].parentElement.offsetWidth;
-	let margin = (totalWidth - (offsetWidth * 2)) / 3;
-	let left = offsetWidth + margin
-	let firstLineTop = 5;
-	let secondLineTop = 5;
-	let itemNumber = 1;
-	items.forEach(function(v) {
-		if (itemNumber % 2 == 0) {
-			v.style.position = 'absolute';
-			v.style.left = left + margin + "px";
-			v.style.top = secondLineTop + "px";
-			secondLineTop += v.offsetHeight + margin;
-			itemNumber++;
-		} else {
-			v.style.position = 'absolute';
-			v.style.left = margin + "px";
-			v.style.top = firstLineTop + "px";
-			firstLineTop += v.offsetHeight + margin;
-			itemNumber++;
 
-		}
-	});
-	const footer = document.querySelector('footer');
-	const headerHeight = document.querySelector('header').offsetHeight;
-	let footerTop = 0;
-	footer.style.position = 'absolute';
-	footer.style.left = 0;
-	footer.style.right = 0;
-	if (firstLineTop > secondLineTop) {
-		footerTop = headerHeight + firstLineTop;
-		footer.style.top = footerTop + "px";
-	} else {
-		footerTop = headerHeight + secondLineTop;
-		footer.style.top = footerTop + "px";
-	}
-}
-*/
 
-//브라우저 화면 크기 변경시마다 재배치
-//window.addEventListener("resize", () => deployItems());

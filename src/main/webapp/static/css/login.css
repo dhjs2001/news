@@ -62,8 +62,7 @@ footer{
 a{
     text-decoration:none;
     color:black;
-    display:block;
-    margin-bottom:1em;
+    display:inline-block;
     font-weight: bold;
 }
 input:focus{
@@ -72,4 +71,8 @@ input:focus{
 .error{
     font-weight:normal;
     color:red;
+}
+
+.submit{
+	cursor:pointer;
 }

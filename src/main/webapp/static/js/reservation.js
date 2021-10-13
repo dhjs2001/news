@@ -110,7 +110,7 @@ function tikets(leftButtons, rightButtons, tiketsInputs, price, totalPrice) {
 
 		if (direction == 'right') {
 			if (checkNumber == 1) {
-				leftButtonNode.src = '/static/img/colorMinusButton.png';
+				leftButtonNode.src = '/getImage/img/colorMinusButton.png';
 				leftButtonNode.style.cursor = 'pointer';
 				inputNode.style.color = activeColor;
 				inputNode.style.borderColor = activeColor;
@@ -125,7 +125,7 @@ function tikets(leftButtons, rightButtons, tiketsInputs, price, totalPrice) {
 				inputNode.style.color = activeColor;
 				inputNode.style.borderColor = activeColor;
 			} else if (checkNumber == 0) {
-				leftButtonNode.src = '/static/img/nonColorMinusButton.png';
+				leftButtonNode.src = '/getImage/img/nonColorMinusButton.png';
 				leftButtonNode.style.cursor = 'default';
 				inputNode.style.color = nonActiveColor;
 				inputNode.style.borderColor = nonActiveColor;
@@ -138,13 +138,15 @@ function tikets(leftButtons, rightButtons, tiketsInputs, price, totalPrice) {
 
 
 // 구매자 정보
-function purchaserInfo(tel, email, tikets, checkTerms, sumTiketsNode, formNode) {
+function purchaserInfo(tel, email, tikets, checkTerms, sumTiketsNode, formNode, buttonNode) {
 	this.reservationTel = document.querySelector("#" + tel);
 	this.reservationEmail = document.querySelector("#" + email);
 	this.tikets = document.querySelectorAll("." + tikets);
 	this.checkTerms = document.querySelector("#" + checkTerms);
 	this.sumTiketsNode = document.querySelector('.' + sumTiketsNode);
 	this.formNode = document.querySelector('#' + formNode);
+	this.buttonNode = document.querySelector('#' + buttonNode);
+
 	this.checkTel = function(telNode) {
 		const regExp = /^01(?:0|1|[6-9])-(?:\d{3}|\d{4})-\d{4}$/;
 		const tel = telNode.value
@@ -198,7 +200,6 @@ function purchaserInfo(tel, email, tikets, checkTerms, sumTiketsNode, formNode) 
 		error.forEach((v) => {
 			v.remove();
 		})
-		const formNode = this.formNode;
 		let trueNum = 0;
 
 		const tiketsNumber = this.checkTiketsNumber(this.tikets);
@@ -208,7 +209,6 @@ function purchaserInfo(tel, email, tikets, checkTerms, sumTiketsNode, formNode) 
 
 			if (checkSumTikets == true) {
 				trueNum += 1;
-				console.log('티켓 확인 끝');
 			} else {
 				this.requestCondition(checkSumTikets, 1);
 			}
@@ -218,7 +218,6 @@ function purchaserInfo(tel, email, tikets, checkTerms, sumTiketsNode, formNode) 
 		const tel = this.checkTel(this.reservationTel);
 		if (tel == true) {
 			trueNum += 1;
-			console.log('전화번호 확인 끝');
 		} else {
 			this.requestCondition(tel);
 		}
@@ -226,25 +225,24 @@ function purchaserInfo(tel, email, tikets, checkTerms, sumTiketsNode, formNode) 
 		const email = this.checkEmail(this.reservationEmail);
 		if (email == true) {
 			trueNum += 1;
-			console.log('이메일 확인 끝');
 		} else {
 			this.requestCondition(email);
 		}
 
 		const agreeTerms = this.checkAgreeTerms(this.checkTerms);
-		console.log("체크 박스:" + agreeTerms);
 		if (agreeTerms == true) {
-			console.log('체크박스 확인 끝');
 			trueNum += 1;
 		} else {
 			this.requestCondition(agreeTerms);
 		}
 
-		if (trueNum == 4) {
-			console.log('전송성공');
-			formNode.submit();
-		} else {
+		if (trueNum != 4) {
+			this.activeButton(0);
 			return false;
+		} else {
+			console.log('전송성공');
+			this.activeButton(1);
+			return true;
 		}
 	};
 
@@ -262,9 +260,7 @@ function purchaserInfo(tel, email, tikets, checkTerms, sumTiketsNode, formNode) 
 		value = 0;
 		this.tikets.forEach((v) => {
 			value += parseInt(v.value);
-			console.log("tikets.v:" + v);
 		});
-		console.log("value:" + value);
 		node.innerText = value + '매';
 	};
 	this.checkSumTikets = function(node) {
@@ -280,7 +276,6 @@ function purchaserInfo(tel, email, tikets, checkTerms, sumTiketsNode, formNode) 
 		targetNodes.forEach((v) => {
 			v.addEventListener("click", () => {
 				this.drawingSumTikets(drawingNode);
-				console.log('매수 이벤트 작동중');
 				let children = v.children;
 				for (let i = 0; i < children.length; i++) {
 					let tagName = children[i].tagName;
@@ -307,6 +302,47 @@ function purchaserInfo(tel, email, tikets, checkTerms, sumTiketsNode, formNode) 
 		}
 	}
 
+	this.activeButton = function() {
+		let num1 = 0;
+		let num2 = 0;
+		let num3 = 0;
+		let num4 = 0;
+		const tiketsNumber = this.checkTiketsNumber(this.tikets);
+		if (tiketsNumber) {
+			const checkSumTikets = this.checkSumTikets(this.sumTiketsNode);
+			if (checkSumTikets == true) {
+				num1 = 1;
+			}else{
+				num1 = 0;
+			}
+		}
+		const tel = this.checkTel(this.reservationTel);
+		if (tel == true) {
+			num2 = 1;
+		}else{
+			num2 = 0;
+		}
+		const email = this.checkEmail(this.reservationEmail);
+		if (email == true) {
+			num3 = 1;
+		}else{
+			num3 = 0;
+		}
+		const agreeTerms = this.checkAgreeTerms(this.checkTerms);
+		if (agreeTerms == true) {
+			num4 = 1;
+		}else{
+			num4 = 0;
+		}
+		let count = num1 + num2 + num3 + num4;
+		if (count != 4) {
+			this.buttonNode.style.backgroundColor = '#b7b4b4';
+		} else {
+			this.buttonNode.style.backgroundColor = '#00cd33';
+		}
+	}
+
+
 	this.openTerms = function(triggerNodeClass, termsNodeClass) {
 		const triggerNodes = document.querySelectorAll('.' + triggerNodeClass);
 		const termsNodes = document.querySelectorAll('.' + termsNodeClass);
@@ -319,13 +355,21 @@ function purchaserInfo(tel, email, tikets, checkTerms, sumTiketsNode, formNode) 
 				}
 			});
 		}
-	};
+	}
+
+	this.addFormEvent = function() {
+		this.formNode.addEventListener("change", () => {
+			this.activeButton();
+		});
+	}
+
+
 }
 
 
 
 const selectTikets = new tikets('left-button', 'right-button', 'tikets-input', 'price', 'total-price');
-const purChaserInfo = new purchaserInfo('reservation-tel', 'reservation-email', 'tikets-input', 'check-terms-checkbox', 'tikets-sum', 'reservation-form');
+const purChaserInfo = new purchaserInfo('reservation-tel', 'reservation-email', 'tikets-input', 'check-terms-checkbox', 'tikets-sum', 'reservation-form', 'reservation-button');
 
 window.addEventListener("load", () => {
 	selectTikets.eventsAdder();
@@ -335,6 +379,7 @@ window.addEventListener("load", () => {
 	const tiketsTargetNode = document.querySelectorAll('.tiket-number-button-container');
 	const sumTiketsNode = document.querySelector('.tikets-sum');
 	purChaserInfo.addEventDrawingSumTikets(tiketsTargetNode, sumTiketsNode);
-
 	purChaserInfo.openTerms('terms-span', 'specific-personal-info-terms');
+	purChaserInfo.addFormEvent();
+
 });

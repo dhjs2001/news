@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.naver.reservation.detail.dto.DetailInfo;
 import com.naver.reservation.detail.dto.DisplayInfo;
+import com.naver.reservation.detail.dto.FileName;
 import com.naver.reservation.detail.dto.ProductPrice;
 import com.naver.reservation.detail.dto.ProductSpecificInfo;
 
@@ -13,4 +14,6 @@ public interface DetailPageService {
 	public List<ProductPrice> getProductPrices(int id);
 	public List<ProductSpecificInfo> getReview(int id);
 	public List<DisplayInfo> getDisplayInfos(int id);
+	public List<FileName> getFileNames(int id);
+	public List<ProductSpecificInfo> getReviewByReservationCommentId(int reservationCommentId);
 }

@@ -15,7 +15,7 @@
 		<div id="gnb">
 			<div class=gnb-image-container>
 				<img class="gnb-image" alt="예약이미지"
-					src="/static/img/spr_bi.c753b938cfe0481b000adab9b84a1f8c.png">
+					src="/getImage/img/spr_bi.c753b938cfe0481b000adab9b84a1f8c.png">
 			</div>
 			<div class="email-box">
 				<a href="/login"> <c:choose>
@@ -33,7 +33,7 @@
 			<div class="promotion-container animation">
 				<c:forEach items="${promotionInfo }" var="item">
 					<div class="promotion-item">
-						<img alt="프로모션 이미지" src="/static/img/${item.fileName }"> <span
+						<img alt="프로모션 이미지" src="/getImage/${item.saveFileName }"> <span
 							class="promotion-description">${item.description }</span>
 					</div>
 				</c:forEach>
@@ -70,11 +70,10 @@
 		</div>
 	</footer>
 
-
 	<script type="text/x-handlebars-template" id="product-template">
 <div class ="product" onclick= "location.href = 'detail/{{{id}}}'" style="cursor:pointer;">
 	<div class = "product-img">
-		<img alt="product-img" src="/static/img/{{{fileName}}}">
+		<img alt="product-img" src="/getImage/{{{saveFileName}}}">
 	</div>
 
 	<div class = "product-info">

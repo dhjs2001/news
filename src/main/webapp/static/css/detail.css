@@ -180,10 +180,7 @@ font-size: 1em;
 }
 .number{color:green;}
 
-.review{
-border-bottom: 1px solid gray;
-padding: 10px 0;
-}
+.review{position: relative;border-bottom: 1px solid gray;padding: 10px 0;}
 .review-content{
 	margin-bottom:0.5em;
 }
@@ -245,6 +242,9 @@ font-weight: bold;
 list-style: none;
 	
 padding: 0;
+}
+.detail-and-map-tab > li{
+	cursor:pointer;	
 }
 .detail-and-map-tab > li:active{
 	color:green;
@@ -316,4 +316,12 @@ padding: 0;
 
 .footer-detail{
 	font-size:0.6em
+}
+.review-header{
+	cursor:pointer;
+}
+.review-img{}
+.review-img > img{
+	margin-top: 0.5em;
+	height: 5em;
 }

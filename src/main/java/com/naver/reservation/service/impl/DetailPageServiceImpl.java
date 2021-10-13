@@ -1,5 +1,6 @@
 package com.naver.reservation.service.impl;
 
+import java.util.LinkedList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,8 +9,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.naver.reservation.detail.dao.DetailInfoDao;
 import com.naver.reservation.detail.dao.DisplayInfoDao;
+import com.naver.reservation.detail.dao.FileNameDao;
 import com.naver.reservation.detail.dto.DetailInfo;
 import com.naver.reservation.detail.dto.DisplayInfo;
+import com.naver.reservation.detail.dto.FileName;
 import com.naver.reservation.detail.dto.ProductPrice;
 import com.naver.reservation.detail.dto.ProductSpecificInfo;
 import com.naver.reservation.detail.dao.ProductPriceDao;
@@ -26,6 +29,8 @@ public class DetailPageServiceImpl implements DetailPageService {
 	ProductspecificInfoDao productspecificInfoDao;
 	@Autowired
 	DisplayInfoDao displayInfoDao;
+	@Autowired
+	FileNameDao fileNameDao;
 	
 	
 	@Override
@@ -51,8 +56,21 @@ public class DetailPageServiceImpl implements DetailPageService {
 
 	@Override
 	@Transactional
-	public List<ProductSpecificInfo> getReview(int id){
-		List<ProductSpecificInfo> list = productspecificInfoDao.getReview(id);
+	public List<ProductSpecificInfo> getReview(int productId){
+		List<ProductSpecificInfo> list = productspecificInfoDao.getReview(productId);
+		return list;
+	}
+	@Transactional
+	@Override
+	public List<ProductSpecificInfo> getReviewByReservationCommentId(int reservationCommentId){
+		List<ProductSpecificInfo> list = productspecificInfoDao.getReviewByReservationCommentId(reservationCommentId);
+		List<String> fileNameList = new LinkedList<>();
+		getFileNames(list.get(0).getReservationUserCommentId()).forEach((fileName)->{
+			String saveFileName = fileName.getSaveFileName(); 
+			fileNameList.add(saveFileName);
+		});
+		list.get(0).setSaveFileName(fileNameList);
+		
 		return list;
 	}
 	
@@ -62,4 +80,12 @@ public class DetailPageServiceImpl implements DetailPageService {
 		List<DisplayInfo> list = displayInfoDao.getDisplayInfos(id);
 		return list;
 	}
+
+	@Override
+	@Transactional
+	public List<FileName> getFileNames(int reservationUserCommentId) {
+		List<FileName> list = fileNameDao.getFileNames(reservationUserCommentId);
+		return list;
+	}
+	
 }

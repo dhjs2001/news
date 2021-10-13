@@ -6,7 +6,7 @@ public class DisplayInfo {
 	private String placeLot;
 	private String placeName;
 	private String tel;
-	private String fileName;
+	private String saveFileName;
 	public String getDescription() {
 		return description;
 	}
@@ -37,16 +37,17 @@ public class DisplayInfo {
 	public void setTel(String tel) {
 		this.tel = tel;
 	}
-	public String getFileName() {
-		return fileName;
+	public String getSaveFileName() {
+		return saveFileName;
 	}
-	public void setFileName(String fileName) {
-		this.fileName = fileName;
+	public void setSaveFileName(String saveFileName) {
+		this.saveFileName = saveFileName;
 	}
 	@Override
 	public String toString() {
 		return "DisplayInfo [description=" + description + ", placeStreet=" + placeStreet + ", placeLot=" + placeLot
-				+ ", placeName=" + placeName + ", tel=" + tel + ", fileName=" + fileName + "]";
+				+ ", placeName=" + placeName + ", tel=" + tel + ", saveFileName=" + saveFileName + "]";
 	}
+
 
 }

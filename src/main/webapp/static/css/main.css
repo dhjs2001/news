@@ -19,6 +19,7 @@ html, body {
 
 .email-box {
 	margin: auto 5px;
+	line-height: 1em;
 }
 .email-box > a{text-decoration: none;color: white;font-size: 1.5em;}
 
@@ -74,6 +75,9 @@ html, body {
 	border-width: 0 0 1px 0;
 	background-color: white;
 }
+.category > li{
+	cursor:pointer;
+}
 .clicked-list{
 	color:green;
 	border-style:solid;
@@ -106,6 +110,7 @@ li:active {
 
 .more {
 	background-color: white;
+	cursor:pointer;
 }
 
 .top {
@@ -115,11 +120,8 @@ li:active {
 
 .content {
 	background-color: grey;
-	padding: 2px;
-	height:100%;
-	display: flex;
-	gap: 5px;
-	justify-content: space-around;
+	overflow:hidden;
+	transition: all 1s;
 }
 
 .animation {
@@ -129,10 +131,14 @@ li:active {
 
 /*category에 따른 product*/
 .product-list1{
-	width:100%;
+	width: 48%;
+	display: inline-block;
+	vertical-align: top;
 }
 .product-list2{
-	width:100%;
+	width: 48%;
+	display: inline-block;
+	vertical-align: top;
 }
 .product{
 	width: 100%;

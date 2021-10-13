@@ -40,10 +40,9 @@ public class MainProductDao {
 		return list;
 	}
 
-	public List<MainProduct> getAllProductByCategoryId(int id, int start){
+	public List<MainProduct> getAllProductByCategoryId(int id){
 		Map<String, Integer> params = new HashMap<>();
 		params.put("id", id);
-		params.put("start", start);
 		List<MainProduct> list = jdbc.query(SELECT_ALLPRODUCT_BY_CATEGORY_ID, params, rowMapper);
 		return list;
 	}

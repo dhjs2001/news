@@ -16,21 +16,23 @@
 				<c:forEach var="value" items="${detail }" begin="0">
 					<div>
 						<img class=title-img alt="배경이미지"
-							src='/static/img/${value.fileName }'>
+							src='/getImage/${value.saveFileName }'>
 					</div>
 				</c:forEach>
 			</div>
 			<div class="title-container">
 				<div class="gnb">
 					<a href="/main"> <img alt="네이버 예약 로고"
-						src="/static/img/spr_bi.c753b938cfe0481b000adab9b84a1f8c.png">
+						src="/getImage/img/spr_bi.c753b938cfe0481b000adab9b84a1f8c.png">
 					</a>
-					<div class="email"><a href="/login"><c:choose>
-						<c:when test="${not empty requestScope.email}">
+					<div class="email">
+						<a href="/login"><c:choose>
+								<c:when test="${not empty requestScope.email}">
 						${email }
 						</c:when>
-						<c:otherwise>예매확인</c:otherwise>
-					</c:choose></a></div>
+								<c:otherwise>예매확인</c:otherwise>
+							</c:choose></a>
+					</div>
 
 				</div>
 				<div class="title-img-page">
@@ -55,8 +57,8 @@
 	</div>
 	<div class="event-info">
 		<div>
-			<img alt="선물상자" src="/static/img/giftBox.png"><span> 이벤트
-				정보</span>
+			<img alt="선물상자" src="/getImage/img/giftBox.png"><span>
+				이벤트 정보</span>
 		</div>
 		<hr>
 		<div>
@@ -69,8 +71,9 @@
 			</span> 할인
 		</div>
 	</div>
-	<button class="reservation-button"  onclick="location.href='/reservation/${id}'">
-		<img alt="달력사진" src="/static/img/calender.png"><span>예매하기</span>
+	<button class="reservation-button"
+		onclick="location.href='/reservation'">
+		<img alt="달력사진" src="/getImage/img/calender.png"><span>예매하기</span>
 	</button>
 	<div class="review-container">
 		<div class="review-summary">
@@ -83,7 +86,7 @@
 				<span class="number">${reviewSize }</span>건 등록
 			</div>
 		</div>
-		<c:forEach var="item" items="${review }" end="2">
+		<c:forEach var="item" items="${review }" end="4">
 			<div class="review">
 				<div class="review-content">
 					<span>${detail[0].description }</span><br> <span>${item.comment }</span>
@@ -93,14 +96,21 @@
 						class="user-email">${item.reservationEmail }</span> ㅣ <span
 						class="visiting-date">${item.createDate }방문</span>
 				</div>
+				<c:if test="${item.saveFileName != null }">
+					<div class="review-img">
+						<c:forEach var="saveFileName" items="${item.saveFileName }">
+							<img src="/getImage/${saveFileName }">
+						</c:forEach>
+					</div>
+				</c:if>
 			</div>
 		</c:forEach>
 		<div class="review-page-comment">
-			<img alt="종 모양" src="/static/img/bell.png"> <span>네이버
+			<img alt="종 모양" src="/getImage/img/bell.png"> <span>네이버
 				예약을 통해 실제 방문한 이용자가 남긴 평가입니다.</span>
 		</div>
 	</div>
-	<button class="more-review" onclick="location.href='/review/${id}'">
+	<button class="more-review" onclick="location.href='/review'">
 		예매자 한줄평 더보기<span>→</span>
 	</button>
 	<div class="detail-or-map-container">
@@ -122,6 +132,7 @@
 			네이버(주)는 통신판매의 당사자가 아니며, 상품의정보, 거래조건, 이용 및 환불 등과 관련한 의무와 책임은 각 회원에게
 			있습니다.<br> <br>@NAVER Corp.
 		</div>
+
 	</footer>
 	<script type="text/javascript"
 		src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
@@ -134,19 +145,19 @@
 		</div>
 		<div class="notice">
 			<span>[공지사항]</span>
-			<img alt="공지사항" src="/static/img/notice.jpg">
+			<img alt="공지사항" src="/getImage/img/notice.jpg">
 		</div>
 	</div>
 	</script>
 	<script type="template/handlebars" id="road-map">
 		<div class="road-map-img-container">
-			<img alt="오시는 길" src="/static/img_map/{{fileName}}">
+			<img alt="오시는 길" src="/getImage/{{saveFileName}}">
 		</div>
 		<div class="address">
 			<div class="address-title">{{description}}</div>
 			
 			<div class="address-detail">
-				<img alt="gps모양" src="/static/img/location.png">
+				<img alt="gps모양" src="/getImage/img/location.png">
 				<div>
 					{{placeStreet}}<br>
 					<span>지번</span> {{placeLot}}<br>
@@ -154,12 +165,12 @@
 				</div>
 			</div>
 			<div class="address-phone-number">
-				<img alt="전화" src="/static/img/phone.png"><span>{{tel}}</span>
+				<img alt="전화" src="/getImage/img/phone.png"><span>{{tel}}</span>
 			</div>
 		</div>
 		<div class="navigation-bar">
-			<div class="seeking-way"><img alt="길찾기" src="/static/img/seekingRoad.png"> 길찾기</div>
-			|<div class="navigation"><img alt="네비게이션" src="/static/img/navigation.png"> 네비게이션</div>
+			<div class="seeking-way"><img alt="길찾기" src="/getImage/img/seekingRoad.png"> 길찾기</div>
+			|<div class="navigation"><img alt="네비게이션" src="/getImage/img/navigation.png"> 네비게이션</div>
 		</div>
 	</script>
 </body>

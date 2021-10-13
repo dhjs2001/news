@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.naver.reservation.main.dao.CategoryDao;
 import com.naver.reservation.main.dao.MainProductDao;
+import com.naver.reservation.main.dto.Category;
 import com.naver.reservation.main.dto.MainProduct;
 import com.naver.reservation.service.MainPageService;
 
@@ -14,6 +16,9 @@ import com.naver.reservation.service.MainPageService;
 public class MainPageServiceImpl implements MainPageService {
 	@Autowired
 	MainProductDao mainProductDao;
+	
+	@Autowired
+	CategoryDao categoryDao;
 	
 	@Override
 	@Transactional
@@ -37,8 +42,8 @@ public class MainPageServiceImpl implements MainPageService {
 	}
 	@Override
 	@Transactional
-	public List<MainProduct> getAllProductByCategoryId(int id, int start){
-		List<MainProduct> list = mainProductDao.getAllProductByCategoryId(id, start);
+	public List<MainProduct> getAllProductByCategoryId(int id){
+		List<MainProduct> list = mainProductDao.getAllProductByCategoryId(id);
 		return list;
 	}
 	
@@ -54,6 +59,13 @@ public class MainPageServiceImpl implements MainPageService {
 	public Integer selectCountByCategoryId(int id) {
 		Integer length = mainProductDao.selectCountByCategoryId(id);
 		return length;
+	}
+	
+	@Transactional
+	@Override
+	public List<Category> getCategories(){
+		List<Category> list = categoryDao.getCategory();
+		return list;
 	}
 
 }

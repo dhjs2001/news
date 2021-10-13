@@ -18,7 +18,7 @@
 			<div class="title">${reservationPageInfo[0].description }</div>
 		</div>
 		<div class="product-img-container">
-			<img src="/static/img/${reservationPageInfo[0].fileName }">
+			<img src="/getImage/img/${reservationPageInfo[0].fileName }">
 			<div class="product-summarization">
 				<div class="description">${reservationPageInfo[0].description }</div>
 				<div class="summarize-info">
@@ -45,7 +45,10 @@
 			<div>
 				<h3>요금</h3>
 				<c:forEach var="item" items="${reservationPageInfo }">
-					${item.priceTypeName }석 ${item.price }원<br>
+					${item.priceTypeName }석 
+					<fmt:formatNumber
+									type="number" pattern="###,###,###,###,###,###"
+									value="${item.price}" />원<br>
 				</c:forEach>
 			</div>
 		</article>
@@ -66,10 +69,10 @@
 					<div>
 						<div class="tiket-number-button-container">
 							<img class="tiket-number-button left-button" alt="-버튼"
-								src="/static/img/nonColorMinusButton.png"> <input
+								src="/getImage/img/nonColorMinusButton.png"> <input
 								class="tikets-input" type="text" name="${item.productPriceId }"
 								value=0> <img class="tiket-number-button right-button"
-								alt="+버튼" src="/static/img/colorPlusButton.png"><br>
+								alt="+버튼" src="/getImage/img/colorPlusButton.png"><br>
 						</div>
 						<span class="total-price">0원</span>
 					</div>
@@ -81,21 +84,25 @@
 			<div class="purchaser-info-title">
 				<h3>예매자 정보</h3>
 				<div>
-					<img alt="체크표시" src="/static/img/check.png">필수입력
+					<img alt="체크표시" src="/getImage/img/check.png">필수입력
 				</div>
 			</div>
 			<div class="specific-info">
 				<div class="specific-info-label">
 					<label for="reservation-name"><img alt="체크표시"
-						src="/static/img/check.png">예매자</label><br> <label
+						src="/getImage/img/check.png">예매자</label><br> <label
 						for="reservation-tel"><img alt="체크표시"
-						src="/static/img/check.png">연락처</label><br> <label
+						src="/getImage/img/check.png">연락처</label><br> <label
 						for="reservation-email"><img alt="체크표시"
-						src="/static/img/check.png">이메일</label><br> 예매내용
+						src="/getImage/img/check.png">이메일</label><br> 예매내용
 				</div>
 				<div class="specific-info-input">
 					<input id="reservation-name" type="text" required placeholder="네이버"
-						name="reservationName"><br> <input
+						name="reservationName"
+						<c:if test='${email !="null" }'>
+						value = ${email }
+						</c:if>
+						><br> <input
 						id="reservation-tel" type="text" placeholder="휴대폰 입력 시 예매내역 문자발송"
 						name="reservationTel"><br> <input
 						id="reservation-email" type="text"
@@ -113,7 +120,7 @@
 			</div>
 			<div class="personal-info-terms">
 				┖개인정보 수집 및 이용 동의<span class="terms-span">보기<img
-					alt="위가 열린 꺾쇠" src="/static/img/openTopClamp.png"></span>
+					alt="위가 열린 꺾쇠" src="/getImage/img/openTopClamp.png"></span>
 				<div class="specific-personal-info-terms">개인정보 관련 내용내용개인정보 관련
 					내용내용개인정보 관련 내용내용개인정보 관련 내용내용개인정보 관련 내용내용개인정보 관련 내용내용 개인정보 관련
 					내용내용개인정보 관련 내용내용개인정보 관련 내용내용개인정보 관련 내용내용개인정보 관련 내용내용개인정보 관련 내용내용
@@ -123,7 +130,7 @@
 			</div>
 			<div class="personal-info-terms">
 				┖개인정보 제3자 제공 동의<span class="terms-span">보기<img
-					alt="위가 열린 꺾쇠" src="/static/img/openTopClamp.png"></span>
+					alt="위가 열린 꺾쇠" src="/getImage/img/openTopClamp.png"></span>
 				<div class="specific-personal-info-terms">개인정보 관련 내용내용개인정보 관련
 					내용내용개인정보 관련 내용내용개인정보 관련 내용내용개인정보 관련 내용내용개인정보 관련 내용내용 개인정보 관련
 					내용내용개인정보 관련 내용내용개인정보 관련 내용내용개인정보 관련 내용내용개인정보 관련 내용내용개인정보 관련 내용내용
@@ -131,10 +138,8 @@
 					내용내용 개인정보 관련 내용내용개인정보 관련 내용내용개인정보 관련 내용내용개인정보 관련 내용내용개인정보 관련
 					내용내용개인정보 관련 내용내용</div>
 			</div>
-			<input type="hidden" name ="productId" value="${reservationPageInfo[0].id }">
-			<input type="hidden" name = "displayInfoId" value = "${reservationPageInfo[0].displayInfoId }">
 		</article>
-		<button class="reservation-button" type="submit"><img alt="박스 안에 들어있는 N" src="/static/img/whiteNaverBox.png">예약하기</button>
+		<button id="reservation-button" type="submit"><img alt="박스 안에 들어있는 N" src="/getImage/img/whiteNaverBox.png">예약하기</button>
 	</form>
 	
 	${httpRequest.reservationPageInfo[0] }

@@ -11,7 +11,7 @@ public class ReservationPageInfo {
 	private String placeStreet;
 	private String fileName;
 	private String productPriceId;
-	private String displayInfoId;
+	private int displayInfoId;
 
 	public int getId() {
 		return id;
@@ -85,11 +85,11 @@ public class ReservationPageInfo {
 		this.productPriceId = productPriceId;
 	}
 
-	public String getDisplayInfoId() {
+	public int getDisplayInfoId() {
 		return displayInfoId;
 	}
 
-	public void setDisplayInfoId(String displayInfoId) {
+	public void setDisplayInfoId(int displayInfoId) {
 		this.displayInfoId = displayInfoId;
 	}
 
