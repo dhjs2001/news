@@ -10,7 +10,7 @@
 
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
-		<param-value>com.naver.reservation.config.ApplicationConfig
+		<param-value>config.ApplicationConfig
 		</param-value>
 	</context-param>
 
@@ -30,7 +30,7 @@
 		</init-param>
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
-			<param-value>com.naver.reservation.config.WebMvcContextConfiguration
+			<param-value>config.WebMvcContextConfiguration
 			</param-value>
 		</init-param>
 		<load-on-startup>1</load-on-startup>

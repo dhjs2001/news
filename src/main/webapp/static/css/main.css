@@ -1,158 +1,140 @@
-@charset "UTF-8";
 
-html, body {
-	margin: 0;
-	padding: 0;
-	font-size: 12px;
-	text-align: center;
-	background-color:lightgray;
+div,header,ul,li,section,nav,footer,h1,h2,h3,h4 {margin:0;padding:0;}
+li { list-style: none; }
+a { text-decoration: none}
+
+.header,.mainArea > .newsNavigation, .mainArea > .content, .newsList > ul{
+	padding:10px;
+	border: 1px solid #cccaca;
 }
 
-#gnb {
-	background-color: #03c75a;
-	height: 35px;
-	display: flex;
-	padding: 5px;
-	align-content: center;
-	justify-content: space-between;
+.wrap{
+	width:800px;
+	margin: 150px auto 0px;
 }
 
-.email-box {
-	margin: auto 5px;
-	line-height: 1em;
+.wrap, .newsNavigation, .content {
+	height: 200px;
 }
-.email-box > a{text-decoration: none;color: white;font-size: 1.5em;}
 
-.gnb-image-container {
+.header {
+	overflow: auto;
+	border-bottom: 0;
+}
+
+.header > ul{
+	float:left;
+}
+
+.header > ul > li {
+	display: inline-block;
+}
+
+.header > .btn {
+	float: right;
+	font-size: 1.2rem;
+}
+
+.left, .right {
+	display: inline-block;
+}
+
+.left {
+	margin-right: 10px;
+}
+
+.mainArea {
+	clear:both;
+	overflow: auto;
+}
+
+.newsList {
 	overflow: hidden;
+    clear: both;
 }
 
-.gnb-image {
-	height: 600%;
+.newsNavigation, .content , .newsList > ul{
+	float: left;
+	box-sizing: border-box;
 }
 
-.promotion {
-	overflow: hidden;
-	background-color: black;
-	height: 300px;
-	background-color: black;
+.newsNavigation{
+	width:200px;
+	border-right: 0;
 }
 
-.promotion-container {
-	display: flex;
-	position: relative;
-	width: 1100%;
+.newsNavigation li {
+	font-size: 13px;
+    cursor: pointer;
+    margin-bottom: 1%;
 }
 
-.promotion-item {
-	width: 100%;
-	height: 300px;
-	position: relative;
-}
-
-.promotion-item>img {
-	width: 100%;
-	height: 100%;
-}
-
-.promotion-item>span {
-	position: absolute;
-	left: 20px;
-	bottom: 35px;
-	color: white;
-	font-size: 25px;
-	text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;
-}
-
-.category {
-	margin: 0;
-	padding: 0;
-	display: flex;
-	justify-content: space-around;
-	align-content: center;
-	list-style: none;
-	border-style: solid;
-	border-width: 0 0 1px 0;
-	background-color: white;
-}
-.category > li{
-	cursor:pointer;
-}
-.clicked-list{
-	color:green;
-	border-style:solid;
-	border-color: green;
-	border-width: 0 0 2px 0;
-}
-.total{
-	background-color:white;
-}
-
-li {
-	padding: 5px;
-	font-weight:400;
-}
-
-li:hover {
-	color: blue;
-}
-
-li:active {
-	color: green;
-	border-style: solid;
-	border-color: green;
-	border-width: 0 0 2px 0;
-}
-.item-length{
-	color:red;
-	font-weight:bold;	
-}
-
-.more {
-	background-color: white;
-	cursor:pointer;
-}
-
-.top {
-	text-decoration: none;
-	color: black;
+.newsNavigation a:hover {
+	text-decoration: underline;
 }
 
 .content {
-	background-color: grey;
-	overflow:hidden;
-	transition: all 1s;
+	width:600px;
+	overflow: auto;
 }
 
-.animation {
-	transition: all 1.5s;
+.content > h4 {
+	height: 26px;
 }
 
+.content .logo-wrap {
+	float:left;
+}
 
-/*category에 따른 product*/
-.product-list1{
-	width: 48%;
-	display: inline-block;
-	vertical-align: top;
+.content .company {
+	max-width: 80%;
 }
-.product-list2{
-	width: 48%;
-	display: inline-block;
-	vertical-align: top;
+
+.newsList > .img-title-wrap , .newsList > ul{
+	float: left;
 }
-.product{
-	width: 100%;
-	background-color:white;
-	margin-bottom:5px;
+
+.newsList > .img-title-wrap {
+	width : 38%;
+	position: relative;
 }
-.product-img > img{
-	width:100%;
+
+.title-desc {
+	background-color: #4e4a4ae0;
+	position: absolute;
+	top: 0;
+	width: 99%;
+	height: 45px;
+	color: #fff;
+	padding: 2%;
+	box-sizing: border-box;
+	font-size: 0.8em;
 }
-.product-content{
-	overflow:hidden;
-	display:-webkit-box;
-	-webkit-line-clamp:3;
-	-webkit-box-orient:vertical;
+
+.newsList > ul {
+	margin-left:2%;
+	width : 60%;
 }
-.to-top{
+	
+.newsList  img, .newsList > ul  {
+}
+
+.newsList ul li {
+	font-size: 14px;
+	margin: 2%;
+}
+
+.news-config {
+	margin-top: 5%;
+    width: 800px;
+}
+
+.news-config ul {
+	overflow: hidden;
+}
+
+.news-config li {
+	float:left;
+	width:20%;
+	margin-bottom: 3%;
 }

@@ -1,4 +1,4 @@
-package com.naver.reservation.config;
+package config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -11,8 +11,6 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
-
-import com.naver.reservation.interceptor.LogInterceptor;
 
 @Configuration
 @EnableWebMvc
@@ -37,7 +35,6 @@ public class WebMvcContextConfiguration implements WebMvcConfigurer {
 		resolver.setPrefix("/WEB-INF/views/");
 		resolver.setSuffix(".jsp");
 		return resolver;
-
 	}
 	
 	
@@ -45,20 +42,7 @@ public class WebMvcContextConfiguration implements WebMvcConfigurer {
 	public void addViewControllers(ViewControllerRegistry registry) {
 		registry.addViewController("/").setViewName("index");
 	}
-	/*
-	@Override
-	public void addInterceptors(InterceptorRegistry registry) {
-		registry.addInterceptor(new LogInterceptor());
-	}
-	*/
 	
-	@Bean
-	public MultipartResolver multipartResolver() {
-	    org.springframework.web.multipart.commons.CommonsMultipartResolver multipartResolver = new org.springframework.web.multipart.commons.CommonsMultipartResolver();
-	    multipartResolver.setMaxUploadSize(10485760 * 10); // 1024 * 1024 * 10
-	    multipartResolver.setDefaultEncoding("UTF-8");
-	    return multipartResolver;
-	    }
 	
 
 }
