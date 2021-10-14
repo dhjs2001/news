@@ -10,5 +10,5 @@ public class NewsController {
 	public String requestGetNews() {
 		return "news";
 	}
-
+	
 }
