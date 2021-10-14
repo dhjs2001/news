@@ -124,7 +124,7 @@
 		</div>
 	</div>
 	<footer>
-		<div onclick="location.href='#'">
+		<div class="top" onclick="location.href='#'">
 			<span>↑</span> TOP
 		</div>
 		<br>

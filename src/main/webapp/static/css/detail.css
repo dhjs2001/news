@@ -325,3 +325,14 @@ padding: 0;
 	margin-top: 0.5em;
 	height: 5em;
 }
+.left-mover{
+	cursor:pointer;
+}
+.right-mover{
+	cursor:pointer;
+}
+.top{
+	display:inline-block;
+	margin-bottom:1em;
+	cursor:pointer;
+}
